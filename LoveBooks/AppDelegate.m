@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "Genre.h"
+#import "ModelManager.h"
 
 @implementation AppDelegate
 
@@ -17,6 +19,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    //Initialize SQLite with Genres
+    ModelManager * manager = [[ModelManager alloc] init];
+
+    NSArray *fetchedObjects = manager.getAllGenres;
+    
+    if(fetchedObjects == nil || fetchedObjects.count == 0)
+    {
+        [self addStandardGenre];
+    }
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
@@ -143,6 +156,26 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark - Initialize DB Entity
+-(BOOL) addStandardGenre
+{
+
+    Genre * genre1 = (Genre*)[NSEntityDescription insertNewObjectForEntityForName:@"Genre" inManagedObjectContext:self.managedObjectContext];
+    Genre * genre2 = (Genre*)[NSEntityDescription insertNewObjectForEntityForName:@"Genre" inManagedObjectContext:self.managedObjectContext];
+    Genre * genre3 = (Genre*)[NSEntityDescription insertNewObjectForEntityForName:@"Genre" inManagedObjectContext:self.managedObjectContext];
+    Genre * genre4 = (Genre*)[NSEntityDescription insertNewObjectForEntityForName:@"Genre" inManagedObjectContext:self.managedObjectContext];
+    
+    [genre1 setName:@"Classics"];
+    [genre2 setName:@"Computer and the net"];
+    [genre3 setName:@"Vampires"];
+    [genre4 setName:@"Picture Books"];
+    
+    NSError * error = nil;
+    [self saveContext];
+    
+    if(error != nil) return NO; else return YES;
 }
 
 @end

@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Book.h"
-#import "BookTableViewController.h"
+#import "ModelManager.h"
 
 @interface BookDetailViewController : UIViewController
 
@@ -16,8 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtTitle;
 @property (weak, nonatomic) IBOutlet UITextField *txtISBN;
 @property (weak, nonatomic) IBOutlet UIButton *btnAddBook;
-@property (strong,nonatomic) Book *bookItem;
-@property (weak,nonatomic) id<BookItemManagerDelegate> bookManagerDelegate;
+@property id<ModelManagerDelegate> managerDelegate;
 @property BOOL isEdit;
 
 @end

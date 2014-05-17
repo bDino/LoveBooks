@@ -7,17 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ItemListManager.h"
+#import "ModelManager.h"
 
-@protocol BookItemManagerDelegate <NSObject>
 
--(void) itemAdded:(Item *) item;
+@interface BookTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
-@end
-
-@interface BookTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, BookItemManagerDelegate>
-
-@property (strong, nonatomic) ItemListManager *itemListManager;
+@property (strong, nonatomic) ModelManager * manager;
 @property (strong,nonatomic) UIBarButtonItem *btnPushToNewBook;
 
 @end

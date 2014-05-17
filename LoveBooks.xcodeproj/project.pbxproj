@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31B5578E1927AC13009A184B /* BookItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B5578D1927AC13009A184B /* BookItem.m */; };
+		31B557911927AC14009A184B /* Genre.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B557901927AC14009A184B /* Genre.m */; };
+		31B557941927B46B009A184B /* ModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B557931927B46B009A184B /* ModelManager.m */; };
 		31DE1BBA19224D77009F6AA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31DE1BB919224D77009F6AA5 /* Foundation.framework */; };
 		31DE1BBC19224D77009F6AA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31DE1BBB19224D77009F6AA5 /* CoreGraphics.framework */; };
 		31DE1BBE19224D77009F6AA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31DE1BBD19224D77009F6AA5 /* UIKit.framework */; };
@@ -22,12 +25,9 @@
 		31DE1BDB19224D77009F6AA5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31DE1BBF19224D77009F6AA5 /* CoreData.framework */; };
 		31DE1BE319224D77009F6AA5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31DE1BE119224D77009F6AA5 /* InfoPlist.strings */; };
 		31DE1BE519224D77009F6AA5 /* LoveBooksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE1BE419224D77009F6AA5 /* LoveBooksTests.m */; };
-		31DE1BFB19251BCF009F6AA5 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE1BF019251BCF009F6AA5 /* Book.m */; };
-		31DE1BFC19251BCF009F6AA5 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE1BF219251BCF009F6AA5 /* Item.m */; };
 		31DE1BFD19251BCF009F6AA5 /* BookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE1BF519251BCF009F6AA5 /* BookTableViewCell.m */; };
 		31DE1BFE19251BCF009F6AA5 /* BookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE1BF819251BCF009F6AA5 /* BookDetailViewController.m */; };
 		31DE1BFF19251BCF009F6AA5 /* BookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE1BFA19251BCF009F6AA5 /* BookTableViewController.m */; };
-		31DE1C0519251CEC009F6AA5 /* ItemListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE1C0419251CEC009F6AA5 /* ItemListManager.m */; };
 		31DE1C0F192520B6009F6AA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE1C0E192520B6009F6AA5 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		31B5578C1927AC13009A184B /* BookItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookItem.h; sourceTree = "<group>"; };
+		31B5578D1927AC13009A184B /* BookItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookItem.m; sourceTree = "<group>"; };
+		31B5578F1927AC14009A184B /* Genre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
+		31B557901927AC14009A184B /* Genre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Genre.m; sourceTree = "<group>"; };
+		31B557921927B46B009A184B /* ModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelManager.h; sourceTree = "<group>"; };
+		31B557931927B46B009A184B /* ModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelManager.m; sourceTree = "<group>"; };
 		31DE1BB619224D77009F6AA5 /* LoveBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoveBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DE1BB919224D77009F6AA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		31DE1BBB19224D77009F6AA5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,18 +66,12 @@
 		31DE1BE019224D77009F6AA5 /* LoveBooksTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LoveBooksTests-Info.plist"; sourceTree = "<group>"; };
 		31DE1BE219224D77009F6AA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		31DE1BE419224D77009F6AA5 /* LoveBooksTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoveBooksTests.m; sourceTree = "<group>"; };
-		31DE1BEF19251BCF009F6AA5 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
-		31DE1BF019251BCF009F6AA5 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
-		31DE1BF119251BCF009F6AA5 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
-		31DE1BF219251BCF009F6AA5 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		31DE1BF419251BCF009F6AA5 /* BookTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookTableViewCell.h; sourceTree = "<group>"; };
 		31DE1BF519251BCF009F6AA5 /* BookTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookTableViewCell.m; sourceTree = "<group>"; };
 		31DE1BF719251BCF009F6AA5 /* BookDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookDetailViewController.h; sourceTree = "<group>"; };
 		31DE1BF819251BCF009F6AA5 /* BookDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookDetailViewController.m; sourceTree = "<group>"; };
 		31DE1BF919251BCF009F6AA5 /* BookTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookTableViewController.h; sourceTree = "<group>"; };
 		31DE1BFA19251BCF009F6AA5 /* BookTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookTableViewController.m; sourceTree = "<group>"; };
-		31DE1C0319251CEC009F6AA5 /* ItemListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemListManager.h; sourceTree = "<group>"; };
-		31DE1C0419251CEC009F6AA5 /* ItemListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemListManager.m; sourceTree = "<group>"; };
 		31DE1C0E192520B6009F6AA5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,8 +135,6 @@
 		31DE1BC119224D77009F6AA5 /* LoveBooks */ = {
 			isa = PBXGroup;
 			children = (
-				31DE1C0319251CEC009F6AA5 /* ItemListManager.h */,
-				31DE1C0419251CEC009F6AA5 /* ItemListManager.m */,
 				31DE1BEE19251BCF009F6AA5 /* Model */,
 				31DE1BF319251BCF009F6AA5 /* TableViewCell */,
 				31DE1BF619251BCF009F6AA5 /* ViewController */,
@@ -182,10 +180,12 @@
 		31DE1BEE19251BCF009F6AA5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				31DE1BEF19251BCF009F6AA5 /* Book.h */,
-				31DE1BF019251BCF009F6AA5 /* Book.m */,
-				31DE1BF119251BCF009F6AA5 /* Item.h */,
-				31DE1BF219251BCF009F6AA5 /* Item.m */,
+				31B5578F1927AC14009A184B /* Genre.h */,
+				31B557901927AC14009A184B /* Genre.m */,
+				31B5578C1927AC13009A184B /* BookItem.h */,
+				31B5578D1927AC13009A184B /* BookItem.m */,
+				31B557921927B46B009A184B /* ModelManager.h */,
+				31B557931927B46B009A184B /* ModelManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,13 +307,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31DE1C0519251CEC009F6AA5 /* ItemListManager.m in Sources */,
-				31DE1BFC19251BCF009F6AA5 /* Item.m in Sources */,
-				31DE1BFB19251BCF009F6AA5 /* Book.m in Sources */,
+				31B5578E1927AC13009A184B /* BookItem.m in Sources */,
 				31DE1BCC19224D77009F6AA5 /* AppDelegate.m in Sources */,
+				31B557941927B46B009A184B /* ModelManager.m in Sources */,
 				31DE1BCF19224D77009F6AA5 /* LoveBooks.xcdatamodeld in Sources */,
 				31DE1BFD19251BCF009F6AA5 /* BookTableViewCell.m in Sources */,
 				31DE1BFE19251BCF009F6AA5 /* BookDetailViewController.m in Sources */,
+				31B557911927AC14009A184B /* Genre.m in Sources */,
 				31DE1BFF19251BCF009F6AA5 /* BookTableViewController.m in Sources */,
 				31DE1BC819224D77009F6AA5 /* main.m in Sources */,
 			);
