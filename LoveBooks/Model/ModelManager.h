@@ -7,12 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BookItem.h"
+#import "Genre.h"
 
 @protocol ModelManagerDelegate <NSObject>
 
--(void) createNewBookWithAuthor:(NSString *) _author
+-(void) createOrUpdateBookWithAuthor:(NSString *) _author
                       title:(NSString *) _title
-                      isbn:(NSString *) _isbn;
+                      isbn:(NSString *) _isbn
+                       genreSet:(NSSet *) _set;
+
+//-(void) addGenreToBook:(BookItem *)book genre:(Genre *)gen;
+//-(void) removeGenreFromBook:(BookItem *)book genre:(Genre *)gen;
+
 @end
 
 @interface ModelManager : NSObject <ModelManagerDelegate>

@@ -62,10 +62,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Genre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4k7-Q5-Kqf">
-                                <rect key="frame" x="20" y="175" width="80" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwy-sq-oax">
+                                <rect key="frame" x="108" y="178" width="192" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Select Genre"/>
+                                <connections>
+                                    <action selector="selectGenrePressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8Od-rH-AeG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ClJ-Cr-lnS">
+                                <rect key="frame" x="20" y="176" width="80" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -86,21 +95,78 @@
                             <constraint firstAttribute="trailing" secondItem="zIa-fB-DSh" secondAttribute="trailing" constant="20" id="ncL-fc-iIp"/>
                             <constraint firstAttribute="trailing" secondItem="ZpH-cs-qRt" secondAttribute="trailing" constant="20" id="pkk-MW-gXe"/>
                             <constraint firstItem="q68-KU-Gvc" firstAttribute="top" secondItem="WDj-8Z-LEF" secondAttribute="bottom" constant="14" id="qQD-hd-Uth"/>
-                            <constraint firstItem="4k7-Q5-Kqf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="sYj-uF-hMy"/>
                             <constraint firstItem="q68-KU-Gvc" firstAttribute="baseline" secondItem="KvC-mR-x90" secondAttribute="baseline" constant="1" id="uYO-zC-t6y"/>
                             <constraint firstItem="KvC-mR-x90" firstAttribute="top" secondItem="ZpH-cs-qRt" secondAttribute="bottom" constant="4" id="wOE-VM-Tfe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="S94-fv-miU"/>
                     <connections>
+                        <outlet property="btnSelectGenre" destination="mwy-sq-oax" id="aI7-re-ufr"/>
                         <outlet property="txtAuthor" destination="ZpH-cs-qRt" id="ArB-8a-arU"/>
                         <outlet property="txtISBN" destination="KvC-mR-x90" id="aCT-YR-0YD"/>
                         <outlet property="txtTitle" destination="zIa-fB-DSh" id="lPq-gt-kQK"/>
+                        <segue destination="dPl-M2-vgy" kind="push" identifier="pushToGenre" id="lcf-Qj-Lbb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1452" y="-3"/>
+        </scene>
+        <!--Genre Table View Controller-->
+        <scene sceneID="M1V-Of-j3t">
+            <objects>
+                <tableViewController id="dPl-M2-vgy" customClass="GenreTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="22" sectionFooterHeight="22" id="U02-4a-45H">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="genreCell" rowHeight="71" id="G6i-e0-oeL" customClass="GenreTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="71"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G6i-e0-oeL" id="0eM-x5-Zfg">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiv-So-HMA">
+                                            <rect key="frame" x="20" y="24" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3B7-LB-jgq">
+                                            <rect key="frame" x="243" y="20" width="51" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="switchChanged:" destination="G6i-e0-oeL" eventType="valueChanged" id="tLn-zx-pjm"/>
+                                                <action selector="switchPressed:" destination="dPl-M2-vgy" eventType="valueChanged" id="3tQ-Z4-bmR"/>
+                                            </connections>
+                                        </switch>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="3B7-LB-jgq" secondAttribute="trailing" constant="28" id="M7S-lQ-lUn"/>
+                                        <constraint firstItem="oiv-So-HMA" firstAttribute="leading" secondItem="0eM-x5-Zfg" secondAttribute="leading" constant="20" id="NGZ-Iz-pVG"/>
+                                        <constraint firstItem="oiv-So-HMA" firstAttribute="top" secondItem="0eM-x5-Zfg" secondAttribute="top" constant="24" id="i3a-58-9wA"/>
+                                        <constraint firstItem="3B7-LB-jgq" firstAttribute="top" secondItem="0eM-x5-Zfg" secondAttribute="top" constant="20" id="o6R-dg-lnD"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblName" destination="oiv-So-HMA" id="vId-68-bal"/>
+                                    <outlet property="switchUsed" destination="3B7-LB-jgq" id="h5u-mc-xwQ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dPl-M2-vgy" id="6yE-rG-keW"/>
+                            <outlet property="delegate" destination="dPl-M2-vgy" id="kMr-2I-qvz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="m3i-Nr-wMF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KmZ-t3-uk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2116" y="-3"/>
         </scene>
         <!--Book Table View Controller - Books of Love-->
         <scene sceneID="NgO-rK-jMd">
@@ -166,6 +232,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="author" destination="Irv-qf-raj" id="uSB-0m-opb"/>
+                                    <outlet property="genre" destination="Cqs-3A-JRa" id="SQK-1a-Pbv"/>
                                     <outlet property="image" destination="YCx-9b-xTb" id="t3F-Kl-ffR"/>
                                     <outlet property="isbn" destination="oe3-qW-mTL" id="buy-j8-LRB"/>
                                     <outlet property="title" destination="5M9-6b-paP" id="twG-oL-tGK"/>

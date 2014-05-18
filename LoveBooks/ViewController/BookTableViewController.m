@@ -14,6 +14,7 @@
 @interface BookTableViewController ()
 
 @property NSUInteger selectedIndex;
+@property (strong,nonatomic) NSArray * items;
 
 @end
 
@@ -44,9 +45,18 @@
 {
     BookTableViewCell *cell = (BookTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"bookCell" forIndexPath:indexPath];
 
-    NSArray *items = [self.manager getAllBooks];
-    BookItem* book = (BookItem*)[items objectAtIndex:indexPath.row];
+    self.items = [self.manager getAllBooks];
+    BookItem* book = (BookItem*)[self.items objectAtIndex:indexPath.row];
 
+    NSMutableString * fullGenre = [[NSMutableString alloc] init];
+
+    for (Genre * genre1 in book.genre) {
+        [fullGenre appendFormat:@"%@,",genre1.name];
+    }
+    
+    //[fullGenre stringByReplacingCharactersInRange:NSMakeRange(fullGenre.length, fullGenre.length) withString:@""];
+    
+    cell.genre.text = fullGenre;
     cell.title.text = book.title;
     cell.author.text = book.author;
     cell.isbn.text = book.isbn;
@@ -78,10 +88,12 @@
     targetVB.managerDelegate = self.manager;
     
     if ([segue.identifier isEqualToString:@"pushSeqToAddBook"]) {
+        BookItem* book = (BookItem*)[self.items objectAtIndex:self.selectedIndex];
+        
         targetVB.isEdit = YES;
+        targetVB.book = book;
     }
 }
 
-# pragma mark - BookItemManagerDelegate
 
 @end

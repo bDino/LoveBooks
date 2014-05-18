@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ModelManager.h"
+#import "Genre.h"
+#import "GenreTableViewController.h"
 
 
 @interface BookTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
