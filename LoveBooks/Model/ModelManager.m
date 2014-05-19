@@ -15,9 +15,6 @@
 
 @property AppDelegate * appDelegate;
 
--(BOOL) addNewBookItem:(NSString *)_author title:(NSString *)_title isbn:(NSString *)_isbn genreSet:(NSSet *)_set;
--(NSArray *) fetchItemsWithName:(NSString *) entityName predicate:(NSPredicate *)pred;
-
 @end
 
 @implementation ModelManager
@@ -26,86 +23,59 @@
 {
     if (self = [super init])
     {
-        self.appDelegate =(AppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     }
-    
+
     return self;
 }
 
--(NSArray *) getAllGenres
+- (NSUInteger)countAllGenres
 {
-    return [self fetchItemsWithName:@"Genre" predicate:nil];
+    NSFetchRequest *fr = [NSFetchRequest fetchRequestWithEntityName:@"Genre"];
+    return [self.appDelegate.managedObjectContext countForFetchRequest:fr error:nil];
 }
 
-
--(NSArray *) getAllBooks
+- (NSUInteger)countAllBooks
 {
-    return [self fetchItemsWithName:@"BookItem" predicate:nil];
+    NSFetchRequest *fr = [NSFetchRequest fetchRequestWithEntityName:@"BookItem"];
+    return [self.appDelegate.managedObjectContext countForFetchRequest:fr error:nil];
 }
 
-#pragma mark - Private Functions
-
--(BOOL) addNewBookItem:(NSString *)_author title:(NSString *)_title isbn:(NSString *)_isbn genreSet:(NSSet *)_set
+- (NSArray *)getAllGenres
 {
-    BookItem* book1 = (BookItem*)[NSEntityDescription insertNewObjectForEntityForName:@"BookItem" inManagedObjectContext:self.appDelegate.managedObjectContext];
-    
-    NSMutableSet  * tmpSet = [[NSMutableSet alloc] init];
-    
-    for (int i = 0; i< _set.count; i++) {
-        [tmpSet addObject:(Genre*)[NSEntityDescription insertNewObjectForEntityForName:@"Genre" inManagedObjectContext:self.appDelegate.managedObjectContext]];
-    }
-    
-    [book1 setTitle:_title];
-    [book1 setIsbn:_isbn];
-    [book1 setAuthor:_author];
-    [book1 setGenre:tmpSet];
-    [book1 setCreateDate:[NSDate date]];
-    
-    NSError * error = nil;
-    [self.appDelegate saveContext];
-    
-    if(error == nil) return YES; else return NO;
+    return [self fetchItemsWithName:@"Genre"];
 }
 
--(NSArray *) fetchItemsWithName:(NSString *)entityName predicate:(NSPredicate *)pred
+- (NSArray *)getAllBooks
 {
-    NSFetchRequest *fetchGenres = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.appDelegate.managedObjectContext];
-    
-    [fetchGenres setEntity:entity];
-    
-    if(pred != nil)
-    {
-        [fetchGenres setPredicate:pred];
-    }
-    
-    NSError *error = nil;
-    NSArray *fetchedObjects = [self.appDelegate.managedObjectContext executeFetchRequest:fetchGenres error:&error];
-    
-    return fetchedObjects;
+    return [self fetchItemsWithName:@"BookItem"];
+}
+
+- (BookItem *)createBookItem {
+    return [NSEntityDescription insertNewObjectForEntityForName:@"BookItem" inManagedObjectContext:self.appDelegate.managedObjectContext];
+}
+
+- (void)rollbackContext {
+    [self.appDelegate.managedObjectContext rollback];
 }
 
 #pragma mark - ModelManagerDelegate
--(void) createOrUpdateBookWithAuthor:(NSString *)_author title:(NSString *)_title isbn:(NSString *)_isbn genreSet:(NSSet *)_set
+
+- (void)saveContext
 {
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"isbn = %@",_isbn];
-    NSArray * foundResult = [self fetchItemsWithName:@"BookItem" predicate:predicate];
-    
-    if(foundResult == nil || foundResult.count == 0)
-    {
-        [self addNewBookItem:_author title:_title isbn:_isbn genreSet:_set];
-    }else
-    {
-        BookItem * book1 = (BookItem *) foundResult.firstObject;
-        
-        book1.author = _author;
-        book1.title = _title;
-        book1.isbn = _isbn;
-        book1.genre = _set;
-    
-        [self.appDelegate saveContext];
-    }
+    [self.appDelegate saveContext];
 }
 
+#pragma mark - Private Methods
+
+-(NSArray *) fetchItemsWithName:(NSString *)entityName
+{
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:entityName];
+
+    NSArray *fetchedObjects = [self.appDelegate.managedObjectContext
+                               executeFetchRequest:fetchRequest error:nil];
+
+    return fetchedObjects;
+}
 
 @end

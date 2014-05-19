@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Haw-Hamburg. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "BookTableViewController.h"
 #import "BookItem.h"
 #import "BookTableViewCell.h"
@@ -14,7 +15,10 @@
 @interface BookTableViewController ()
 
 @property NSUInteger selectedIndex;
-@property (strong,nonatomic) NSArray * items;
+@property (weak, nonatomic) AppDelegate * appDelegate;
+@property (strong, nonatomic) ModelManager * modelManager;
+
+@property (strong, nonatomic) NSArray * items;
 
 @end
 
@@ -23,20 +27,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.btnPushToNewBook = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(pushToNewBookView)];
+
+    self.btnPushToNewBook = [[UIBarButtonItem alloc]
+                             initWithTitle:@"New"
+                             style:UIBarButtonItemStylePlain
+                             target:self
+                             action:@selector(addBook)];
+
     self.navigationItem.rightBarButtonItem = self.btnPushToNewBook;
-    self.manager = [[ModelManager alloc] init];
+    self.modelManager = [[ModelManager alloc] init];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self.modelManager rollbackContext];
     [self.tableView reloadData];
 }
 
--(IBAction)pushToNewBookView
+-(IBAction)addBook
 {
-    [self performSegueWithIdentifier:@"pushSeqNewBook" sender:self];
+    [self performSegueWithIdentifier:@"pushToAddBook" sender:self];
 }
 
 # pragma mark - UITableViewDataSource methods
@@ -45,7 +55,7 @@
 {
     BookTableViewCell *cell = (BookTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"bookCell" forIndexPath:indexPath];
 
-    self.items = [self.manager getAllBooks];
+    self.items = [self.modelManager getAllBooks];
     BookItem* book = (BookItem*)[self.items objectAtIndex:indexPath.row];
 
     NSMutableString * fullGenre = [[NSMutableString alloc] init];
@@ -53,8 +63,6 @@
     for (Genre * genre1 in book.genre) {
         [fullGenre appendFormat:@"%@,",genre1.name];
     }
-    
-    //[fullGenre stringByReplacingCharactersInRange:NSMakeRange(fullGenre.length, fullGenre.length) withString:@""];
     
     cell.genre.text = fullGenre;
     cell.title.text = book.title;
@@ -66,7 +74,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.manager.getAllBooks count];
+    return [self.modelManager countAllBooks];
 }
 
 # pragma mark - UITableViewDelegate methods
@@ -79,19 +87,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedIndex = indexPath.row;
-    [self performSegueWithIdentifier:@"pushSeqToAddBook" sender:self];
+    [self performSegueWithIdentifier:@"pushToEditBook" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    BookDetailViewController  *targetVB = (BookDetailViewController*)segue.destinationViewController;
-    targetVB.managerDelegate = self.manager;
-    
-    if ([segue.identifier isEqualToString:@"pushSeqToAddBook"]) {
-        BookItem* book = (BookItem*)[self.items objectAtIndex:self.selectedIndex];
-        
-        targetVB.isEdit = YES;
-        targetVB.book = book;
+    BookDetailViewController *destination = (BookDetailViewController*)segue.destinationViewController;
+    destination.modelManagerDelegate = self.modelManager;
+
+    if ([segue.identifier isEqualToString:@"pushToEditBook"]) {       
+        destination.book = (BookItem*)[self.items objectAtIndex:self.selectedIndex];
+    } else if ([segue.identifier isEqualToString:@"pushToAddBook"]) {
+        destination.book = [self.modelManager createBookItem];
     }
 }
 

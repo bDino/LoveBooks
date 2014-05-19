@@ -19,20 +19,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
-    //Initialize SQLite with Genres
-    ModelManager * manager = [[ModelManager alloc] init];
 
-    NSArray *fetchedObjects = manager.getAllGenres;
-    
-    if(fetchedObjects == nil || fetchedObjects.count == 0)
-    {
-        [self addStandardGenre];
-    }
+    [self initializeDatabase];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)initializeDatabase
+{
+    NSFetchRequest *fetchGenres = [NSFetchRequest fetchRequestWithEntityName:@"Genre"];
+    NSInteger result = [self.managedObjectContext countForFetchRequest:fetchGenres
+                                                                 error:nil];
+
+    if(result == NSNotFound)
+    {
+        [self addStandardGenre];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -119,7 +123,14 @@
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator
+          addPersistentStoreWithType:NSSQLiteStoreType
+          configuration:nil
+          URL:storeURL
+          options:nil
+          error:&error]) {
+
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
         /*
          Replace this implementation with code to handle the error appropriately.
          
@@ -145,8 +156,8 @@
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }    
-    
+    }
+
     return _persistentStoreCoordinator;
 }
 
@@ -159,23 +170,23 @@
 }
 
 #pragma mark - Initialize DB Entity
--(BOOL) addStandardGenre
+- (void)addStandardGenre
 {
+    NSArray *names = @[
+                       @"Classics",
+                       @"Computer and the net",
+                       @"Vampires",
+                       @"Picture Books"
+                       ];
+    for (NSString *name in names)
+    {
+        Genre *genre = (Genre *)[NSEntityDescription
+                                  insertNewObjectForEntityForName:@"Genre"
+                                  inManagedObjectContext:self.managedObjectContext];
+        [genre setName:name];
+    }
 
-    Genre * genre1 = (Genre*)[NSEntityDescription insertNewObjectForEntityForName:@"Genre" inManagedObjectContext:self.managedObjectContext];
-    Genre * genre2 = (Genre*)[NSEntityDescription insertNewObjectForEntityForName:@"Genre" inManagedObjectContext:self.managedObjectContext];
-    Genre * genre3 = (Genre*)[NSEntityDescription insertNewObjectForEntityForName:@"Genre" inManagedObjectContext:self.managedObjectContext];
-    Genre * genre4 = (Genre*)[NSEntityDescription insertNewObjectForEntityForName:@"Genre" inManagedObjectContext:self.managedObjectContext];
-    
-    [genre1 setName:@"Classics"];
-    [genre2 setName:@"Computer and the net"];
-    [genre3 setName:@"Vampires"];
-    [genre4 setName:@"Picture Books"];
-    
-    NSError * error = nil;
     [self saveContext];
-    
-    if(error != nil) return NO; else return YES;
 }
 
 @end

@@ -16,39 +16,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIBarButtonItem *btnSave  = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(actionAddNewBook)];
+    UIBarButtonItem *btnSave  = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveBook)];
     
     self.navigationItem.rightBarButtonItem = btnSave;
-    self.genreSet = [[NSMutableSet alloc] initWithSet:self.book.genre];
-    
-    if(self.isEdit)
+
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+
+    [self.view addGestureRecognizer:tap];
+}
+
+-(void)dismissKeyboard {
+    [self.view resignFirstResponder];
+    for(UIView *subview in self.view.subviews)
     {
-        self.txtAuthor.text = self.book.author;
-        self.txtTitle.text = self.book.title;
-        self.txtISBN.text  = self.book.isbn;
+        [subview resignFirstResponder];
     }
 }
 
--(void) viewDidAppear:(BOOL)animated
+-(void) viewWillAppear:(BOOL)animated
 {
-    if(self.genreSet.count != 0)
-    {
-        NSMutableString * fullGenre = [[NSMutableString alloc] init];
-    
-        for (Genre * genre1 in self.genreSet) {
-            [fullGenre appendFormat:@"%@,",genre1.name];
-        }
-    
-        self.btnSelectGenre.titleLabel.text = fullGenre;
-        }
-}
+    [super viewWillAppear:animated];
 
--(void)viewDidDisappear:(BOOL)animated
-{
-    self.genreSet = nil;
-    self.book = nil;
+    self.txtTitle.text = self.book.title;
+    self.txtAuthor.text = self.book.author;
+    self.txtIsbn.text = self.book.isbn;
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -56,27 +50,23 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)actionAddNewBook
+-(void)viewWillDisappear:(BOOL)animated
 {
-    if(![self.txtTitle.text isEqualToString:@""] && ![self.txtISBN.text isEqualToString:@""])
+    [super viewWillDisappear:animated];
+}
+
+- (IBAction)saveBook
+{
+    if(![self.txtTitle.text isEqualToString:@""]
+       && ![self.txtIsbn.text isEqualToString:@""])
     {
-        self.isEdit = NO;
-        [self.managerDelegate createOrUpdateBookWithAuthor:self.txtAuthor.text title:self.txtTitle.text isbn:self.txtISBN.text genreSet:self.genreSet];
+        self.book.title = self.txtTitle.text;
+        self.book.author = self.txtAuthor.text;
+        self.book.isbn = self.txtIsbn.text;
+
+        [self.modelManagerDelegate saveContext];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
-}
-
-- (IBAction)selectGenrePressed:(id)sender {
-    [self performSegueWithIdentifier:@"pushToGenre" sender:self];
-}
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    GenreTableViewController *targetVB = (GenreTableViewController *)segue.destinationViewController;
-    targetVB.sender = self;
 }
 
 @end

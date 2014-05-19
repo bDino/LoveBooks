@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ModelManager.h"
 #import "Genre.h"
-#import "GenreTableViewController.h"
 
 
 @interface BookTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) ModelManager * manager;
 @property (strong,nonatomic) UIBarButtonItem *btnPushToNewBook;
 
 @end

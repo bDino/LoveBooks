@@ -12,19 +12,19 @@
 
 @protocol ModelManagerDelegate <NSObject>
 
--(void) createOrUpdateBookWithAuthor:(NSString *) _author
-                      title:(NSString *) _title
-                      isbn:(NSString *) _isbn
-                       genreSet:(NSSet *) _set;
-
-//-(void) addGenreToBook:(BookItem *)book genre:(Genre *)gen;
-//-(void) removeGenreFromBook:(BookItem *)book genre:(Genre *)gen;
+-(void) saveContext;
 
 @end
 
 @interface ModelManager : NSObject <ModelManagerDelegate>
 
--(NSArray *) getAllGenres;
--(NSArray *) getAllBooks;
+- (NSUInteger)countAllGenres;
+- (NSUInteger)countAllBooks;
+
+- (NSArray *)getAllGenres;
+- (NSArray *)getAllBooks;
+
+- (BookItem *)createBookItem;
+- (void)rollbackContext;
 
 @end
