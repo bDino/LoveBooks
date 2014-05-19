@@ -29,7 +29,7 @@
 		31DE1BFE19251BCF009F6AA5 /* BookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE1BF819251BCF009F6AA5 /* BookDetailViewController.m */; };
 		31DE1BFF19251BCF009F6AA5 /* BookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE1BFA19251BCF009F6AA5 /* BookTableViewController.m */; };
 		31DE1C0F192520B6009F6AA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE1C0E192520B6009F6AA5 /* Main.storyboard */; };
-		F1AF6705192A4FBC00CC6354 /* LoveBooks.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = F1AF6704192A4FBC00CC6354 /* LoveBooks.xcdatamodel */; };
+		F1AF6760192A97E000CC6354 /* LoveBooks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1AF675E192A97E000CC6354 /* LoveBooks.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,7 @@
 		31DE1BF919251BCF009F6AA5 /* BookTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookTableViewController.h; sourceTree = "<group>"; };
 		31DE1BFA19251BCF009F6AA5 /* BookTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookTableViewController.m; sourceTree = "<group>"; };
 		31DE1C0E192520B6009F6AA5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F1AF6704192A4FBC00CC6354 /* LoveBooks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = LoveBooks.xcdatamodel; path = LoveBooks.xcdatamodeld/LoveBooks.xcdatamodel; sourceTree = "<group>"; };
+		F1AF675F192A97E000CC6354 /* LoveBooks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LoveBooks.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,7 @@
 				31DE1BD019224D77009F6AA5 /* Images.xcassets */,
 				31DE1BC219224D77009F6AA5 /* Supporting Files */,
 				31DE1C0E192520B6009F6AA5 /* Main.storyboard */,
-				F1AF6704192A4FBC00CC6354 /* LoveBooks.xcdatamodel */,
+				F1AF675E192A97E000CC6354 /* LoveBooks.xcdatamodeld */,
 			);
 			path = LoveBooks;
 			sourceTree = "<group>";
@@ -314,9 +314,9 @@
 			files = (
 				31B5578E1927AC13009A184B /* BookItem.m in Sources */,
 				31DE1BCC19224D77009F6AA5 /* AppDelegate.m in Sources */,
+				F1AF6760192A97E000CC6354 /* LoveBooks.xcdatamodeld in Sources */,
 				31B557941927B46B009A184B /* ModelManager.m in Sources */,
 				31DE1BFD19251BCF009F6AA5 /* BookTableViewCell.m in Sources */,
-				F1AF6705192A4FBC00CC6354 /* LoveBooks.xcdatamodel in Sources */,
 				31DE1BFE19251BCF009F6AA5 /* BookDetailViewController.m in Sources */,
 				31B5579A1928C74A009A184B /* GenreTableViewCell.m in Sources */,
 				31B557A01928CA87009A184B /* Genre.m in Sources */,
@@ -530,6 +530,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F1AF675E192A97E000CC6354 /* LoveBooks.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F1AF675F192A97E000CC6354 /* LoveBooks.xcdatamodel */,
+			);
+			currentVersion = F1AF675F192A97E000CC6354 /* LoveBooks.xcdatamodel */;
+			path = LoveBooks.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 31DE1BAE19224D77009F6AA5 /* Project object */;
 }
