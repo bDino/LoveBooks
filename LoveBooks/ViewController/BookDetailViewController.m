@@ -30,7 +30,7 @@
     [self.view addGestureRecognizer:tap];
 }
 
--(void)dismissKeyboard {
+- (void)dismissKeyboard {
     [self.view resignFirstResponder];
     for(UIView *subview in self.view.subviews)
     {
@@ -38,7 +38,7 @@
     }
 }
 
--(void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
@@ -55,7 +55,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
 }

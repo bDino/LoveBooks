@@ -38,14 +38,14 @@
     self.modelManager = [[ModelManager alloc] init];
 }
 
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [self.modelManager rollbackContext];
     self.items = [self.modelManager getAllBooks];
     [self.tableView reloadData];
 }
 
--(IBAction)addBook
+- (IBAction)addBook
 {
     [self performSegueWithIdentifier:@"pushToAddBook" sender:self];
 }

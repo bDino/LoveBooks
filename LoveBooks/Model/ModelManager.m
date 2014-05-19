@@ -19,7 +19,7 @@
 
 @implementation ModelManager
 
--(id)init
+- (id)init
 {
     if (self = [super init])
     {
@@ -46,11 +46,10 @@
     NSFetchRequest *fetchRequest = [NSFetchRequest
                                     fetchRequestWithEntityName:@"Genre"];
 
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor
-                                       sortDescriptorWithKey:@"name"
-                                       ascending:YES];
+    NSSortDescriptor *orderByName = [NSSortDescriptor sortDescriptorWithKey:@"name"
+                                                                  ascending:YES];
 
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    [fetchRequest setSortDescriptors:@[orderByName]];
 
     return [self.appDelegate.managedObjectContext
             executeFetchRequest:fetchRequest error:nil];
@@ -75,18 +74,6 @@
 
 - (void)rollbackContext {
     [self.appDelegate.managedObjectContext rollback];
-}
-
-#pragma mark - Private Methods
-
--(NSArray *) fetchItemsWithName:(NSString *)entityName
-{
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:entityName];
-
-    NSArray *fetchedObjects = [self.appDelegate.managedObjectContext
-                               executeFetchRequest:fetchRequest error:nil];
-
-    return fetchedObjects;
 }
 
 @end
