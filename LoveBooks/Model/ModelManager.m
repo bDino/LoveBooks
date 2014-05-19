@@ -43,27 +43,38 @@
 
 - (NSArray *)getAllGenres
 {
-    return [self fetchItemsWithName:@"Genre"];
+    NSFetchRequest *fetchRequest = [NSFetchRequest
+                                    fetchRequestWithEntityName:@"Genre"];
+
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor
+                                       sortDescriptorWithKey:@"name"
+                                       ascending:YES];
+
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+
+    return [self.appDelegate.managedObjectContext
+            executeFetchRequest:fetchRequest error:nil];
 }
 
 - (NSArray *)getAllBooks
 {
-    return [self fetchItemsWithName:@"BookItem"];
+    NSFetchRequest *fetchRequest = [NSFetchRequest
+                                    fetchRequestWithEntityName:@"BookItem"];
+    return [self.appDelegate.managedObjectContext
+            executeFetchRequest:fetchRequest error:nil];
 }
 
 - (BookItem *)createBookItem {
     return [NSEntityDescription insertNewObjectForEntityForName:@"BookItem" inManagedObjectContext:self.appDelegate.managedObjectContext];
 }
 
-- (void)rollbackContext {
-    [self.appDelegate.managedObjectContext rollback];
-}
-
-#pragma mark - ModelManagerDelegate
-
 - (void)saveContext
 {
     [self.appDelegate saveContext];
+}
+
+- (void)rollbackContext {
+    [self.appDelegate.managedObjectContext rollback];
 }
 
 #pragma mark - Private Methods

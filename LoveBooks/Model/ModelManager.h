@@ -10,13 +10,7 @@
 #import "BookItem.h"
 #import "Genre.h"
 
-@protocol ModelManagerDelegate <NSObject>
-
--(void) saveContext;
-
-@end
-
-@interface ModelManager : NSObject <ModelManagerDelegate>
+@interface ModelManager : NSObject
 
 - (NSUInteger)countAllGenres;
 - (NSUInteger)countAllBooks;
@@ -25,6 +19,8 @@
 - (NSArray *)getAllBooks;
 
 - (BookItem *)createBookItem;
+
+- (void) saveContext;
 - (void)rollbackContext;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookItem.h"
 
 @interface BookTableViewCell : UITableViewCell
 

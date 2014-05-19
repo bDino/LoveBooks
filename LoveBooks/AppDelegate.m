@@ -33,7 +33,7 @@
     NSInteger result = [self.managedObjectContext countForFetchRequest:fetchGenres
                                                                  error:nil];
 
-    if(result == NSNotFound)
+    if(result == 0 || result == NSNotFound)
     {
         [self addStandardGenre];
     }
@@ -178,6 +178,7 @@
                        @"Vampires",
                        @"Picture Books"
                        ];
+
     for (NSString *name in names)
     {
         Genre *genre = (Genre *)[NSEntityDescription

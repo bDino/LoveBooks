@@ -6,8 +6,11 @@
 //
 
 #import "BookDetailViewController.h"
+#import "GenreTableViewCell.h"
 
 @interface BookDetailViewController ()
+
+@property (strong, nonatomic) NSArray *genres;
 
 @end
 
@@ -39,6 +42,8 @@
 {
     [super viewWillAppear:animated];
 
+    self.genres = [self.modelManager getAllGenres];
+
     self.txtTitle.text = self.book.title;
     self.txtAuthor.text = self.book.author;
     self.txtIsbn.text = self.book.isbn;
@@ -64,9 +69,31 @@
         self.book.author = self.txtAuthor.text;
         self.book.isbn = self.txtIsbn.text;
 
-        [self.modelManagerDelegate saveContext];
+        [self.modelManager saveContext];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
+}
+
+# pragma mark - UITableViewDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GenreTableViewCell *cell = (GenreTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"selectGenreCell" forIndexPath:indexPath];
+
+    Genre* genre = (Genre*)[self.genres objectAtIndex:indexPath.row];
+
+    cell.genre = genre;
+    cell.bookItem = self.book;
+
+    cell.lblName.text = genre.name;
+    cell.switchUsed.on = [self.book.genres containsObject:genre];
+
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.modelManager countAllGenres];
 }
 
 @end

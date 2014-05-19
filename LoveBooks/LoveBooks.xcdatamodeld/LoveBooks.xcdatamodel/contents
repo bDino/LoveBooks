@@ -2,17 +2,16 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="BookItem" representedClassName="BookItem" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="createDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isbn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="genre" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Genre" inverseName="bookItems" inverseEntity="Genre" syncable="YES"/>
+        <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Genre" inverseName="bookItems" inverseEntity="Genre" syncable="YES"/>
     </entity>
     <entity name="Genre" representedClassName="Genre" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="bookItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookItem" inverseName="genre" inverseEntity="BookItem" syncable="YES"/>
+        <relationship name="bookItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookItem" inverseName="genres" inverseEntity="BookItem" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BookItem" positionX="-45" positionY="-18" width="128" height="118"/>
+        <element name="BookItem" positionX="-45" positionY="-18" width="128" height="103"/>
         <element name="Genre" positionX="144" positionY="9" width="128" height="73"/>
     </elements>
 </model>

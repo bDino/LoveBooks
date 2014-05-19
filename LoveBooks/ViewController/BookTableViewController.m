@@ -41,6 +41,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.modelManager rollbackContext];
+    self.items = [self.modelManager getAllBooks];
     [self.tableView reloadData];
 }
 
@@ -55,16 +56,10 @@
 {
     BookTableViewCell *cell = (BookTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"bookCell" forIndexPath:indexPath];
 
-    self.items = [self.modelManager getAllBooks];
     BookItem* book = (BookItem*)[self.items objectAtIndex:indexPath.row];
 
-    NSMutableString * fullGenre = [[NSMutableString alloc] init];
-
-    for (Genre * genre1 in book.genre) {
-        [fullGenre appendFormat:@"%@,",genre1.name];
-    }
     
-    cell.genre.text = fullGenre;
+    cell.genre.text = [book genreNames];
     cell.title.text = book.title;
     cell.author.text = book.author;
     cell.isbn.text = book.isbn;
@@ -93,7 +88,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     BookDetailViewController *destination = (BookDetailViewController*)segue.destinationViewController;
-    destination.modelManagerDelegate = self.modelManager;
+    destination.modelManager = self.modelManager;
 
     if ([segue.identifier isEqualToString:@"pushToEditBook"]) {       
         destination.book = (BookItem*)[self.items objectAtIndex:self.selectedIndex];

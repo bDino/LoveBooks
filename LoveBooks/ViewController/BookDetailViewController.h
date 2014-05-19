@@ -11,14 +11,14 @@
 #import "BookItem.h"
 #import "Genre.h"
 
-@interface BookDetailViewController : UIViewController
+@interface BookDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextField *txtAuthor;
 @property (weak, nonatomic) IBOutlet UITextField *txtTitle;
 @property (weak, nonatomic) IBOutlet UITextField *txtIsbn;
 
-@property id<ModelManagerDelegate> modelManagerDelegate;
-@property (strong, nonatomic) BookItem * book;
+@property (strong, nonatomic) ModelManager *modelManager;
+@property (strong, nonatomic) BookItem *book;
 
 
 @end

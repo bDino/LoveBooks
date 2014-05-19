@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Genre.h"
+#import "BookItem.h"
 
 @interface GenreTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UISwitch *switchUsed;
+
+@property (strong, nonatomic) Genre *genre;
+@property (strong, nonatomic) BookItem *bookItem;
 
 @end

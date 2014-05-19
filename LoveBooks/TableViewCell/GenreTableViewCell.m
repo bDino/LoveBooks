@@ -32,5 +32,11 @@
 }
 
 - (IBAction)switchChanged:(id)sender {
+    if ([sender isOn])
+    {
+        [self.bookItem addGenresObject:self.genre];
+    } else {
+        [self.bookItem removeGenresObject:self.genre];
+    }
 }
 @end
