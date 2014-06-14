@@ -1,7 +1,7 @@
 platform :ios, "7.1"
 
 target "LoveBooks" do
-  pod 'RestKit'
+  pod 'AFNetworking'
 end
 
 target "LoveBooksTests" do
