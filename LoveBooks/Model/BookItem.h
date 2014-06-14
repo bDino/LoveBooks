@@ -16,7 +16,7 @@
 @property (nonatomic, retain) NSString * author;
 @property (nonatomic, retain) NSString * isbn;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSSet *genres;
+@property (nonatomic, retain) NSSet * genres;
 @end
 
 @interface BookItem (CoreDataGeneratedAccessors)

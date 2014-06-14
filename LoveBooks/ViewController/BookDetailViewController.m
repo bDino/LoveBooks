@@ -28,6 +28,8 @@
                                    action:@selector(dismissKeyboard)];
 
     [self.view addGestureRecognizer:tap];
+
+    self.bookDownloader = [[NSURLSessionBookDownloader alloc] init];
 }
 
 - (void)dismissKeyboard {
@@ -62,16 +64,35 @@
 
 - (IBAction)saveBook
 {
-    if(![self.txtTitle.text isEqualToString:@""]
-       && ![self.txtIsbn.text isEqualToString:@""])
+    if ([self userEnteredIsbnOnly])
+    {
+        [self.bookDownloader updateBook:self.book ByIsbn:self.txtIsbn.text];
+
+        [self.modelManager saveContext];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else if ([self userEnteredValidData])
     {
         self.book.title = self.txtTitle.text;
         self.book.author = self.txtAuthor.text;
         self.book.isbn = self.txtIsbn.text;
 
         [self.modelManager saveContext];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (BOOL)userEnteredIsbnOnly
+{
+    return ![self.txtIsbn.text isEqualToString:@""]
+        && [self.txtAuthor.text isEqualToString:@""]
+        && [self.txtTitle.text isEqualToString:@""];
+}
+
+- (BOOL)userEnteredValidData
+{
+    return ![self.txtAuthor.text isEqualToString:@""]
+        && ![self.txtTitle.text isEqualToString:@""];
 }
 
 # pragma mark - UITableViewDataSource

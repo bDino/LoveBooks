@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSURLSessionBookDownloader.h"
 #import "ModelManager.h"
 #import "BookItem.h"
 #import "Genre.h"
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtTitle;
 @property (weak, nonatomic) IBOutlet UITextField *txtIsbn;
 
+@property (strong, nonatomic) BookDownloader *bookDownloader;
 @property (strong, nonatomic) ModelManager *modelManager;
 @property (strong, nonatomic) BookItem *book;
 
