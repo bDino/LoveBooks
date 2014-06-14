@@ -31,16 +31,19 @@
 -(void)updateBook:(BookItem *)book ByIsbn:(NSString *)isbn
 {
     NSURL * url = [NSURL URLWithString:[BOOK_API_ENDPOINT stringByAppendingString:isbn]];
-    [self.session dataTaskWithURL:url
-                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    [[self.session dataTaskWithURL:url
+                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                     if (!error) {
-                        NSObject *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
 
-                        NSLog(jsonObject);
+                        NSArray *data = [jsonObject objectForKey:@"data"];
+
+                        NSLog([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"isbn10"]);
+
+                        [self.delegate didUpdateBook:book];
                     }
-
                 }
-     ];
+     ] resume];
 }
 
 @end
