@@ -12,8 +12,8 @@
 
 -(void)updateBook:(BookItem *)book ByIsbn:(NSString *)isbn
 {
-    NSURL * url = [NSURL URLWithString:[BOOK_API_ENDPOINT stringByAppendingString:isbn]];
-    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+    //NSURL * url = [NSURL URLWithString:[BOOK_API_ENDPOINT stringByAppendingString:isbn]];
+    //NSURLRequest * request = [NSURLRequest requestWithURL:url];
 }
 
 @end

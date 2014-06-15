@@ -12,7 +12,7 @@
 #import "BookItem.h"
 #import "Genre.h"
 
-@interface BookDetailViewController : UIViewController <UITableViewDataSource>
+@interface BookDetailViewController : UIViewController <UITableViewDataSource, BookDownloaderDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *txtAuthor;
 @property (weak, nonatomic) IBOutlet UITextField *txtTitle;
@@ -21,6 +21,8 @@
 @property (strong, nonatomic) BookDownloader *bookDownloader;
 @property (strong, nonatomic) ModelManager *modelManager;
 @property (strong, nonatomic) BookItem *book;
+
+- (IBAction)actionIsbnEditingDidEnd:(id)sender;
 
 
 @end

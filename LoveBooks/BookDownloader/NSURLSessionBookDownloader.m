@@ -21,13 +21,14 @@
     if (self = [super init])
     {
         NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-
+        
         self.session = [NSURLSession sessionWithConfiguration:configuration];
     }
 
     return self;
 }
 
+//Testing with ISBN 0615464807
 -(void)updateBook:(BookItem *)book ByIsbn:(NSString *)isbn
 {
     NSURL * url = [NSURL URLWithString:[BOOK_API_ENDPOINT stringByAppendingString:isbn]];
@@ -37,13 +38,20 @@
                         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
 
                         NSArray *data = [jsonObject objectForKey:@"data"];
-
-                        NSLog([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"isbn10"]);
-
+                        NSArray *author = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"author_data"]);
+                        
+                        book.isbn = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"isbn10"]);
+                        book.author = ([(NSDictionary *)[author objectAtIndex:0] objectForKey:@"name"]);
+                        book.title = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"title"]);
+                        
                         [self.delegate didUpdateBook:book];
+                    }else
+                    {
+                        NSLog(@"Error: %@ %@", error, [error userInfo]);
                     }
                 }
      ] resume];
 }
+
 
 @end

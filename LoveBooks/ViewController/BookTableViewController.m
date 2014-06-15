@@ -57,7 +57,7 @@
     BookTableViewCell *cell = (BookTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"bookCell" forIndexPath:indexPath];
 
     BookItem* book = (BookItem*)[self.items objectAtIndex:indexPath.row];
-
+    NSLog(@"%@ , %@ , %@",book.isbn,book.author,book.title);
     
     cell.genre.text = [book genreNames];
     cell.title.text = book.title;

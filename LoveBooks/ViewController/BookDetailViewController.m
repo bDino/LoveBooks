@@ -11,7 +11,7 @@
 @interface BookDetailViewController ()
 
 @property (strong, nonatomic) NSArray *genres;
-
+@property (strong,nonatomic) UIActivityIndicatorView *activityView;
 @end
 
 @implementation BookDetailViewController
@@ -30,6 +30,7 @@
     [self.view addGestureRecognizer:tap];
 
     self.bookDownloader = [[NSURLSessionBookDownloader alloc] init];
+    self.bookDownloader.delegate = self;
 }
 
 - (void)dismissKeyboard {
@@ -64,14 +65,7 @@
 
 - (IBAction)saveBook
 {
-    if ([self userEnteredIsbnOnly])
-    {
-        [self.bookDownloader updateBook:self.book ByIsbn:self.txtIsbn.text];
-
-        [self.modelManager saveContext];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    else if ([self userEnteredValidData])
+    if ([self userEnteredValidData])
     {
         self.book.title = self.txtTitle.text;
         self.book.author = self.txtAuthor.text;
@@ -80,19 +74,22 @@
         [self.modelManager saveContext];
         [self.navigationController popViewControllerAnimated:YES];
     }
-}
-
-- (BOOL)userEnteredIsbnOnly
-{
-    return ![self.txtIsbn.text isEqualToString:@""]
-        && [self.txtAuthor.text isEqualToString:@""]
-        && [self.txtTitle.text isEqualToString:@""];
+    else
+    {
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:@"Please enter valid Data!"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+        [errorAlert show];
+    }
 }
 
 - (BOOL)userEnteredValidData
 {
     return ![self.txtAuthor.text isEqualToString:@""]
-        && ![self.txtTitle.text isEqualToString:@""];
+        && ![self.txtTitle.text isEqualToString:@""]
+        && ![self.txtIsbn.text isEqualToString:@""];
 }
 
 # pragma mark - UITableViewDataSource
@@ -117,4 +114,24 @@
     return [self.modelManager countAllGenres];
 }
 
+# pragma mark - BookDownloaderDelegate
+-(void)didUpdateBook:(BookItem *)book;
+{
+    if(book != nil)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.txtIsbn setEnabled:NO];
+            self.txtAuthor.text = book.author;
+            self.txtTitle.text = book.title;
+        });
+    }    
+}
+
+- (IBAction)actionIsbnEditingDidEnd:(id)sender {
+    if(self.txtIsbn.text.length == 10)
+    {
+        [self.bookDownloader updateBook:self.book ByIsbn:self.txtIsbn.text];
+    }
+
+}
 @end

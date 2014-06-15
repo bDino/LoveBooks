@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "BookDownloader.h"
 
-@interface NSURLSessionBookDownloader : BookDownloader
+@interface NSURLSessionBookDownloader : BookDownloader <NSURLSessionDelegate>
 
 @end
