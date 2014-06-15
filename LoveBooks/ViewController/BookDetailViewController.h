@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtIsbn;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator1;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator2;
+@property (weak, nonatomic) IBOutlet UIImageView *bookImageView;
 
 @property (strong, nonatomic) BookDownloader *bookDownloader;
 @property (strong, nonatomic) ModelManager *modelManager;

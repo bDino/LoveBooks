@@ -50,6 +50,9 @@
     self.txtTitle.text = self.book.title;
     self.txtAuthor.text = self.book.author;
     self.txtIsbn.text = self.book.isbn;
+    
+    [self.bookImageView.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    [self.bookImageView.layer setBorderWidth: 1.0];
 }
 
 - (void)didReceiveMemoryWarning

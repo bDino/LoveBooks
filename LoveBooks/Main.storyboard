@@ -16,19 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Author" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZpH-cs-qRt">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Author" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZpH-cs-qRt">
                                 <rect key="frame" x="114" y="128" width="192" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zIa-fB-DSh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titel" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zIa-fB-DSh">
                                 <rect key="frame" x="114" y="89" width="192" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ISBN" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KvC-mR-x90">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ISBN" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KvC-mR-x90">
                                 <rect key="frame" x="114" y="166" width="192" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -83,7 +83,7 @@
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="qba-Ro-eNf"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jOu-h3-Cuu">
+                            <activityIndicatorView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jOu-h3-Cuu">
                                 <rect key="frame" x="200" y="133" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
@@ -95,11 +95,18 @@
                                 <rect key="frame" x="7" y="87" width="94" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMd-iB-Y0k">
+                                <rect key="frame" x="13" y="126" width="82" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <size key="titleShadowOffset" width="3" height="2"/>
+                                <state key="normal" title="Set Image"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zIa-fB-DSh" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="25" id="1Gy-jj-Mq2"/>
                             <constraint firstItem="KvC-mR-x90" firstAttribute="leading" secondItem="dL3-Tg-FFp" secondAttribute="trailing" constant="13" id="2QZ-r8-fJs"/>
+                            <constraint firstItem="dL3-Tg-FFp" firstAttribute="leading" secondItem="KMd-iB-Y0k" secondAttribute="trailing" constant="-88" id="3PR-kp-KIo"/>
                             <constraint firstAttribute="trailing" secondItem="ZpH-cs-qRt" secondAttribute="trailing" constant="14" id="3ch-CP-mli"/>
                             <constraint firstItem="ZpH-cs-qRt" firstAttribute="leading" secondItem="dL3-Tg-FFp" secondAttribute="trailing" constant="13" id="4oE-yg-Spn"/>
                             <constraint firstAttribute="trailing" secondItem="IAw-5a-9G7" secondAttribute="trailing" id="6qy-5m-5ln"/>
@@ -116,6 +123,7 @@
                             <constraint firstItem="IAw-5a-9G7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="j3f-Mf-fQt"/>
                             <constraint firstItem="jOu-h3-Cuu" firstAttribute="leading" secondItem="ZpH-cs-qRt" secondAttribute="trailing" constant="-106" id="jjo-6s-phe"/>
                             <constraint firstItem="zIa-fB-DSh" firstAttribute="top" secondItem="CV5-hV-ocr" secondAttribute="bottom" constant="-24" id="ju9-Jq-xIw"/>
+                            <constraint firstItem="KMd-iB-Y0k" firstAttribute="top" secondItem="dL3-Tg-FFp" secondAttribute="bottom" constant="-70" id="r7p-61-6UY"/>
                             <constraint firstItem="ZpH-cs-qRt" firstAttribute="top" secondItem="zIa-fB-DSh" secondAttribute="bottom" constant="9" id="waz-VQ-KJg"/>
                         </constraints>
                     </view>
@@ -133,6 +141,7 @@
                     <connections>
                         <outlet property="activityIndicator1" destination="CV5-hV-ocr" id="OuZ-EW-2mB"/>
                         <outlet property="activityIndicator2" destination="jOu-h3-Cuu" id="sRd-Mu-7Qr"/>
+                        <outlet property="bookImageView" destination="dL3-Tg-FFp" id="f8h-tm-stz"/>
                         <outlet property="txtAuthor" destination="ZpH-cs-qRt" id="ArB-8a-arU"/>
                         <outlet property="txtIsbn" destination="KvC-mR-x90" id="B18-Pi-Tdc"/>
                         <outlet property="txtTitle" destination="zIa-fB-DSh" id="lPq-gt-kQK"/>
