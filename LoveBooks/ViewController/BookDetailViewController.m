@@ -117,19 +117,30 @@
 # pragma mark - BookDownloaderDelegate
 -(void)didUpdateBook:(BookItem *)book;
 {
-    if(book != nil)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.txtIsbn setEnabled:NO];
-            self.txtAuthor.text = book.author;
-            self.txtTitle.text = book.title;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+            [self.activityIndicator1 stopAnimating];
+            [self.activityIndicator2 stopAnimating];
+            
+            if(book != nil)
+            {
+                [self.txtIsbn setEnabled:NO];
+                self.txtAuthor.text = book.author;
+                self.txtTitle.text = book.title;
+            }
+            else
+            {
+                self.txtAuthor.text = @"Error loading resource";
+                self.txtTitle.text = @"Error loading resource";
+            }
         });
-    }    
 }
 
 - (IBAction)actionIsbnEditingDidEnd:(id)sender {
     if(self.txtIsbn.text.length == 10)
     {
+        [self.activityIndicator1 startAnimating];
+        [self.activityIndicator2 startAnimating];
         [self.bookDownloader updateBook:self.book ByIsbn:self.txtIsbn.text];
     }
 

@@ -36,6 +36,7 @@
 
     self.navigationItem.rightBarButtonItem = self.btnPushToNewBook;
     self.modelManager = [[ModelManager alloc] init];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -57,7 +58,6 @@
     BookTableViewCell *cell = (BookTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"bookCell" forIndexPath:indexPath];
 
     BookItem* book = (BookItem*)[self.items objectAtIndex:indexPath.row];
-    NSLog(@"%@ , %@ , %@",book.isbn,book.author,book.title);
     
     cell.genre.text = [book genreNames];
     cell.title.text = book.title;

@@ -37,17 +37,30 @@
                     if (!error) {
                         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
 
-                        NSArray *data = [jsonObject objectForKey:@"data"];
-                        NSArray *author = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"author_data"]);
+                        @try
+                        {
+                            NSArray *data = [jsonObject objectForKey:@"data"];
+                            NSArray *author = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"author_data"]);
                         
-                        book.isbn = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"isbn10"]);
-                        book.author = ([(NSDictionary *)[author objectAtIndex:0] objectForKey:@"name"]);
-                        book.title = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"title"]);
+                            book.isbn = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"isbn10"]);
+                            book.author = ([(NSDictionary *)[author objectAtIndex:0] objectForKey:@"name"]);
+                            book.title = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"title"]);
                         
-                        [self.delegate didUpdateBook:book];
+                            [self.delegate didUpdateBook:book];
+                        }
+                        @catch
+                        (NSException * e) {
+                            NSLog(@"Exception: %@", e);
+                        }
+                        @finally
+                        {
+                            [self.delegate didUpdateBook:nil];                        
+                        }
+                        
                     }else
                     {
                         NSLog(@"Error: %@ %@", error, [error userInfo]);
+                        [self.delegate didUpdateBook:nil];
                     }
                 }
      ] resume];
