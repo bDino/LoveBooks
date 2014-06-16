@@ -43,9 +43,19 @@
 
                         if (data)
                         {
-                            NSDictionary *author = [[data objectForKey:@"author_data"] objectAtIndex:0];
-
-                            book.author = [author objectForKey:@"name"];
+                            NSArray *authorData = [data objectForKey:@"author_data"];
+                            
+                            if([authorData isKindOfClass:[NSArray class]]
+                               && authorData.count > 0)
+                            {
+                                NSDictionary *author = [[data objectForKey:@"author_data"] objectAtIndex:0];
+                                
+                                book.author = [author objectForKey:@"name"];
+                            }else
+                            {
+                                book.author = @"Couldn retrieve author";
+                            }
+                            
                             book.isbn = [data objectForKey:@"isbn10"];
                             book.title = [data objectForKey:@"title"];
 

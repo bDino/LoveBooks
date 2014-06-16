@@ -16,19 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Author" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZpH-cs-qRt">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Author" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZpH-cs-qRt">
                                 <rect key="frame" x="114" y="128" width="192" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titel" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zIa-fB-DSh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titel" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zIa-fB-DSh">
                                 <rect key="frame" x="114" y="89" width="192" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ISBN" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KvC-mR-x90">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ISBN" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KvC-mR-x90">
                                 <rect key="frame" x="114" y="166" width="192" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -90,20 +90,6 @@
                                 <rect key="frame" x="200" y="93" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dL3-Tg-FFp">
-                                <rect key="frame" x="7" y="87" width="94" height="109"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="109" id="KEv-ff-bIA"/>
-                                    <constraint firstAttribute="width" constant="94" id="wPU-nh-GnG"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMd-iB-Y0k">
-                                <rect key="frame" x="13" y="126" width="82" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <size key="titleShadowOffset" width="3" height="2"/>
-                                <state key="normal" title="Set Image"/>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUO-fb-NT8">
                                 <rect key="frame" x="236" y="165" width="64" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -114,32 +100,44 @@
                                     <action selector="completeByIsbn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0Ok-TG-mm3"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="offenes_buch.png" translatesAutoresizingMaskIntoConstraints="NO" id="DtB-1g-ReN">
+                                <rect key="frame" x="10" y="89" width="96" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWy-RL-Ojd">
+                                <rect key="frame" x="18" y="103" width="82" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="setImage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="tqP-ps-PLZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zIa-fB-DSh" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="25" id="1Gy-jj-Mq2"/>
-                            <constraint firstItem="KvC-mR-x90" firstAttribute="leading" secondItem="dL3-Tg-FFp" secondAttribute="trailing" constant="13" id="2QZ-r8-fJs"/>
                             <constraint firstItem="IUO-fb-NT8" firstAttribute="leading" secondItem="KvC-mR-x90" secondAttribute="trailing" constant="-70" id="2uT-KV-rqh"/>
-                            <constraint firstItem="dL3-Tg-FFp" firstAttribute="leading" secondItem="KMd-iB-Y0k" secondAttribute="trailing" constant="-88" id="3PR-kp-KIo"/>
                             <constraint firstAttribute="trailing" secondItem="ZpH-cs-qRt" secondAttribute="trailing" constant="14" id="3ch-CP-mli"/>
-                            <constraint firstItem="ZpH-cs-qRt" firstAttribute="leading" secondItem="dL3-Tg-FFp" secondAttribute="trailing" constant="13" id="4oE-yg-Spn"/>
+                            <constraint firstItem="ZpH-cs-qRt" firstAttribute="leading" secondItem="DtB-1g-ReN" secondAttribute="trailing" constant="8" id="4hv-R8-GS0"/>
                             <constraint firstAttribute="trailing" secondItem="IAw-5a-9G7" secondAttribute="trailing" id="6qy-5m-5ln"/>
                             <constraint firstAttribute="trailing" secondItem="KvC-mR-x90" secondAttribute="trailing" constant="14" id="7tv-rU-LOx"/>
                             <constraint firstItem="KvC-mR-x90" firstAttribute="top" secondItem="IUO-fb-NT8" secondAttribute="bottom" constant="-29" id="ES8-jM-ErV"/>
-                            <constraint firstItem="dL3-Tg-FFp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="23" id="Fr8-JA-kzn"/>
+                            <constraint firstItem="EWy-RL-Ojd" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="39" id="HZZ-La-HEV"/>
                             <constraint firstAttribute="trailing" secondItem="zIa-fB-DSh" secondAttribute="trailing" constant="14" id="Iar-We-Ogf"/>
                             <constraint firstItem="jOu-h3-Cuu" firstAttribute="top" secondItem="ZpH-cs-qRt" secondAttribute="bottom" constant="-25" id="K5z-05-ghS"/>
+                            <constraint firstItem="zIa-fB-DSh" firstAttribute="leading" secondItem="DtB-1g-ReN" secondAttribute="trailing" constant="8" id="OCg-5y-gqd"/>
                             <constraint firstItem="IAw-5a-9G7" firstAttribute="top" secondItem="KvC-mR-x90" secondAttribute="bottom" constant="27" id="SIv-0p-Prt"/>
                             <constraint firstItem="CV5-hV-ocr" firstAttribute="leading" secondItem="zIa-fB-DSh" secondAttribute="trailing" constant="-106" id="TCJ-4Y-fjW"/>
                             <constraint firstItem="KvC-mR-x90" firstAttribute="top" secondItem="ZpH-cs-qRt" secondAttribute="bottom" constant="8" id="V66-sq-UaP"/>
-                            <constraint firstItem="dL3-Tg-FFp" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="7" id="Vt6-mN-Ae3"/>
-                            <constraint firstItem="zIa-fB-DSh" firstAttribute="leading" secondItem="dL3-Tg-FFp" secondAttribute="trailing" constant="13" id="YNJ-L7-YPH"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="IAw-5a-9G7" secondAttribute="bottom" constant="3" id="edN-mL-9VF"/>
                             <constraint firstItem="IAw-5a-9G7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="j3f-Mf-fQt"/>
                             <constraint firstItem="jOu-h3-Cuu" firstAttribute="leading" secondItem="ZpH-cs-qRt" secondAttribute="trailing" constant="-106" id="jjo-6s-phe"/>
                             <constraint firstItem="zIa-fB-DSh" firstAttribute="top" secondItem="CV5-hV-ocr" secondAttribute="bottom" constant="-24" id="ju9-Jq-xIw"/>
-                            <constraint firstItem="KMd-iB-Y0k" firstAttribute="top" secondItem="dL3-Tg-FFp" secondAttribute="bottom" constant="-70" id="r7p-61-6UY"/>
+                            <constraint firstItem="KvC-mR-x90" firstAttribute="leading" secondItem="DtB-1g-ReN" secondAttribute="trailing" constant="8" id="uhb-Rf-S34"/>
                             <constraint firstItem="ZpH-cs-qRt" firstAttribute="top" secondItem="zIa-fB-DSh" secondAttribute="bottom" constant="9" id="waz-VQ-KJg"/>
+                            <constraint firstItem="DtB-1g-ReN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="8" id="yhh-zS-DPe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="S94-fv-miU">
@@ -159,8 +157,8 @@
                     <connections>
                         <outlet property="activityIndicator1" destination="CV5-hV-ocr" id="OuZ-EW-2mB"/>
                         <outlet property="activityIndicator2" destination="jOu-h3-Cuu" id="sRd-Mu-7Qr"/>
-                        <outlet property="bookImageView" destination="dL3-Tg-FFp" id="f8h-tm-stz"/>
                         <outlet property="btnComplete" destination="IUO-fb-NT8" id="oOT-ae-5qf"/>
+                        <outlet property="imageView" destination="DtB-1g-ReN" id="wgu-DA-qx0"/>
                         <outlet property="txtAuthor" destination="ZpH-cs-qRt" id="ArB-8a-arU"/>
                         <outlet property="txtIsbn" destination="KvC-mR-x90" id="B18-Pi-Tdc"/>
                         <outlet property="txtTitle" destination="zIa-fB-DSh" id="lPq-gt-kQK"/>
@@ -282,6 +280,9 @@
             <point key="canvasLocation" x="114" y="-3"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="offenes_buch.png" width="88" height="84"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

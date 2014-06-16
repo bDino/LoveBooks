@@ -12,6 +12,7 @@
 #import "ModelManager.h"
 #import "BookItem.h"
 #import "Genre.h"
+#import "ImageHelper.h"
 
 @interface BookDetailViewController : UIViewController <UITableViewDataSource, BookDownloaderDelegate>
 
@@ -21,7 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtIsbn;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator1;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator2;
-@property (weak, nonatomic) IBOutlet UIImageView *bookImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 
 @property (strong, nonatomic) BookDownloader *bookDownloader;
 @property (strong, nonatomic) ModelManager *modelManager;
@@ -30,5 +32,6 @@
 - (IBAction)completeByIsbn:(id)sender;
 - (IBAction)isbnEdited:(id)sender;
 - (IBAction)changedDownloader:(UISegmentedControl *)sender;
+- (IBAction)setImage:(id)sender;
 
 @end

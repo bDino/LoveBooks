@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		189C0631B0624989A6435C41 /* libPods-LoveBooks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA037D860D94CA5928BBEDC /* libPods-LoveBooks.a */; };
-		31B5578E1927AC13009A184B /* BookItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B5578D1927AC13009A184B /* BookItem.m */; };
 		31B557941927B46B009A184B /* ModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B557931927B46B009A184B /* ModelManager.m */; };
 		31B5579A1928C74A009A184B /* GenreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B557991928C74A009A184B /* GenreTableViewCell.m */; };
 		31B557A01928CA87009A184B /* Genre.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B5579F1928CA87009A184B /* Genre.m */; };
@@ -30,6 +29,9 @@
 		31DE1BFE19251BCF009F6AA5 /* BookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE1BF819251BCF009F6AA5 /* BookDetailViewController.m */; };
 		31DE1BFF19251BCF009F6AA5 /* BookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE1BFA19251BCF009F6AA5 /* BookTableViewController.m */; };
 		31DE1C0F192520B6009F6AA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE1C0E192520B6009F6AA5 /* Main.storyboard */; };
+		31FD6313194F9CFB008EC24D /* BookItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FD6312194F9CFB008EC24D /* BookItem.m */; };
+		31FD631A194FB0AA008EC24D /* offenes_buch.png in Resources */ = {isa = PBXBuildFile; fileRef = 31FD6319194FB0AA008EC24D /* offenes_buch.png */; };
+		31FD631D194FB0BC008EC24D /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FD631C194FB0BC008EC24D /* ImageHelper.m */; };
 		F18B3FE719489F3200F06BEB /* AFNetworkingBookDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = F18B3FE619489F3200F06BEB /* AFNetworkingBookDownloader.m */; };
 		F18B3FEA1948A8EE00F06BEB /* NSURLSessionBookDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = F18B3FE91948A8EE00F06BEB /* NSURLSessionBookDownloader.m */; };
 		F18B3FEC1948A98100F06BEB /* BookDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = F18B3FEB1948A98100F06BEB /* BookDownloader.m */; };
@@ -48,8 +50,6 @@
 
 /* Begin PBXFileReference section */
 		1ABE09DED3464C2CBADB8614 /* Pods-LoveBooks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveBooks.xcconfig"; path = "Pods/Pods-LoveBooks.xcconfig"; sourceTree = "<group>"; };
-		31B5578C1927AC13009A184B /* BookItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookItem.h; sourceTree = "<group>"; };
-		31B5578D1927AC13009A184B /* BookItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookItem.m; sourceTree = "<group>"; };
 		31B557921927B46B009A184B /* ModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelManager.h; sourceTree = "<group>"; };
 		31B557931927B46B009A184B /* ModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelManager.m; sourceTree = "<group>"; };
 		31B557981928C74A009A184B /* GenreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenreTableViewCell.h; sourceTree = "<group>"; };
@@ -80,6 +80,11 @@
 		31DE1BF919251BCF009F6AA5 /* BookTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookTableViewController.h; sourceTree = "<group>"; };
 		31DE1BFA19251BCF009F6AA5 /* BookTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookTableViewController.m; sourceTree = "<group>"; };
 		31DE1C0E192520B6009F6AA5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		31FD6311194F9CFB008EC24D /* BookItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookItem.h; sourceTree = "<group>"; };
+		31FD6312194F9CFB008EC24D /* BookItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookItem.m; sourceTree = "<group>"; };
+		31FD6319194FB0AA008EC24D /* offenes_buch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = offenes_buch.png; sourceTree = "<group>"; };
+		31FD631B194FB0BC008EC24D /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
+		31FD631C194FB0BC008EC24D /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
 		3CA037D860D94CA5928BBEDC /* libPods-LoveBooks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LoveBooks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F18B3FE319489B9800F06BEB /* BookDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BookDownloader.h; path = BookDownloader/BookDownloader.h; sourceTree = "<group>"; };
 		F18B3FE519489F3200F06BEB /* AFNetworkingBookDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkingBookDownloader.h; path = BookDownloader/AFNetworkingBookDownloader.h; sourceTree = "<group>"; };
@@ -153,6 +158,8 @@
 		31DE1BC119224D77009F6AA5 /* LoveBooks */ = {
 			isa = PBXGroup;
 			children = (
+				31FD6318194FB0AA008EC24D /* Resources */,
+				31FD6317194FB0A0008EC24D /* Util */,
 				F18B3FE419489BA400F06BEB /* BookDownloader */,
 				31DE1BEE19251BCF009F6AA5 /* Model */,
 				31DE1BF319251BCF009F6AA5 /* TableViewCell */,
@@ -199,10 +206,10 @@
 		31DE1BEE19251BCF009F6AA5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				31FD6311194F9CFB008EC24D /* BookItem.h */,
+				31FD6312194F9CFB008EC24D /* BookItem.m */,
 				31B5579E1928CA87009A184B /* Genre.h */,
 				31B5579F1928CA87009A184B /* Genre.m */,
-				31B5578C1927AC13009A184B /* BookItem.h */,
-				31B5578D1927AC13009A184B /* BookItem.m */,
 				31B557921927B46B009A184B /* ModelManager.h */,
 				31B557931927B46B009A184B /* ModelManager.m */,
 			);
@@ -229,6 +236,23 @@
 				31DE1BFA19251BCF009F6AA5 /* BookTableViewController.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		31FD6317194FB0A0008EC24D /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				31FD631B194FB0BC008EC24D /* ImageHelper.h */,
+				31FD631C194FB0BC008EC24D /* ImageHelper.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		31FD6318194FB0AA008EC24D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				31FD6319194FB0AA008EC24D /* offenes_buch.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F18B3FE419489BA400F06BEB /* BookDownloader */ = {
@@ -324,6 +348,7 @@
 			files = (
 				31DE1C0F192520B6009F6AA5 /* Main.storyboard in Resources */,
 				31DE1BC619224D77009F6AA5 /* InfoPlist.strings in Resources */,
+				31FD631A194FB0AA008EC24D /* offenes_buch.png in Resources */,
 				31DE1BD119224D77009F6AA5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,7 +401,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31B5578E1927AC13009A184B /* BookItem.m in Sources */,
 				31DE1BCC19224D77009F6AA5 /* AppDelegate.m in Sources */,
 				F1AF6760192A97E000CC6354 /* LoveBooks.xcdatamodeld in Sources */,
 				31B557941927B46B009A184B /* ModelManager.m in Sources */,
@@ -386,7 +410,9 @@
 				31DE1BFE19251BCF009F6AA5 /* BookDetailViewController.m in Sources */,
 				31B5579A1928C74A009A184B /* GenreTableViewCell.m in Sources */,
 				31B557A01928CA87009A184B /* Genre.m in Sources */,
+				31FD6313194F9CFB008EC24D /* BookItem.m in Sources */,
 				31DE1BFF19251BCF009F6AA5 /* BookTableViewController.m in Sources */,
+				31FD631D194FB0BC008EC24D /* ImageHelper.m in Sources */,
 				31DE1BC819224D77009F6AA5 /* main.m in Sources */,
 				F18B3FE719489F3200F06BEB /* AFNetworkingBookDownloader.m in Sources */,
 			);

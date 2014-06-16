@@ -2,7 +2,7 @@
 //  BookItem.h
 //  LoveBooks
 //
-//  Created by Luciano Maiwald on 19.05.14.
+//  Created by Dino on 16/06/14.
 //  Copyright (c) 2014 Haw-Hamburg. All rights reserved.
 //
 
@@ -16,7 +16,8 @@
 @property (nonatomic, retain) NSString * author;
 @property (nonatomic, retain) NSString * isbn;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSSet * genres;
+@property (nonatomic, retain) NSData * image;
+@property (nonatomic, retain) NSSet *genres;
 @end
 
 @interface BookItem (CoreDataGeneratedAccessors)
@@ -27,5 +28,4 @@
 - (void)removeGenres:(NSSet *)values;
 
 - (NSString *)genreNames;
-
 @end

@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSArray *genres;
 @property (strong, nonatomic) UIActivityIndicatorView *activityView;
 @property (strong, nonatomic) UIBarButtonItem *saveButton;
+@property (strong,nonatomic) UIImagePickerController *imagePickerController;
 @end
 
 @implementation BookDetailViewController
@@ -32,6 +33,12 @@
 
     self.bookDownloader = [[NSURLSessionBookDownloader alloc] init];
     self.bookDownloader.delegate = self;
+    
+    
+    
+    self.imagePickerController = [[UIImagePickerController alloc] init];
+    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    self.imagePickerController.delegate = self;
 }
 
 - (void)dismissKeyboard {
@@ -52,8 +59,11 @@
     self.txtAuthor.text = self.book.author;
     self.txtIsbn.text = self.book.isbn;
     
-    [self.bookImageView.layer setBorderColor: [[UIColor blackColor] CGColor]];
-    [self.bookImageView.layer setBorderWidth: 1.0];
+    if(self.book.image != nil)
+    {
+        [self.imageView setImage:[ImageHelper imageByScalingProportionallyToSize:self.imageView.frame.size
+                                                                           Image:[UIImage imageWithData:self.book.image]]];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -124,6 +134,10 @@
     self.bookDownloader.delegate = self;
 }
 
+- (IBAction)setImage:(id)sender {
+    [self presentViewController:self.imagePickerController animated:YES completion:nil];
+}
+
 - (IBAction)isbnEdited:(id)sender
 {
     if(self.txtIsbn.text.length == 10)
@@ -190,7 +204,17 @@
 {
     return [self.modelManager countAllGenres];
 }
+# pragma mark - UIImagePickerDelegate
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    self.book.image = UIImagePNGRepresentation(image);
+    [self.imageView setImage:[ImageHelper imageByScalingProportionallyToSize:self.imageView.frame.size
+                                                                       Image:image]];
+    [picker dismissViewControllerAnimated:YES completion:^{
+    }];
+}
 
 
 @end

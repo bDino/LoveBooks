@@ -66,6 +66,22 @@
     cell.author.text = book.author;
     cell.isbn.text = book.isbn;
 
+    CGSize size = cell.image.frame.size;
+    UIImage *scaledImage = nil;
+    
+    if(book.image != nil)
+    {
+        scaledImage = [ImageHelper imageByScalingProportionallyToSize:size Image:[UIImage imageWithData:book.image]];
+        
+        if(scaledImage == nil)
+        {
+            scaledImage = [ImageHelper imageByScalingProportionallyToSize:size Image:[UIImage imageNamed:@"offenes_buch"]];
+        }
+        
+        [cell.image setImage:scaledImage];
+    }
+    
+    
     return cell;
 }
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ModelManager.h"
 #import "Genre.h"
+#import "ImageHelper.h"
 
 
 @interface BookTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
