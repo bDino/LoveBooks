@@ -44,6 +44,8 @@
     [self.modelManager rollbackContext];
     self.items = [self.modelManager getAllBooks];
     [self.tableView reloadData];
+    
+    self.btnPushToNewBook.enabled = YES;
 }
 
 - (IBAction)addBook

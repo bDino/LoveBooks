@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xDN-c0-671">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xDN-c0-671">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -33,6 +33,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="isbnEdited:" destination="vXZ-lx-hvc" eventType="editingChanged" id="3FP-Yq-qOP"/>
+                                </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IAw-5a-9G7">
                                 <rect key="frame" x="0.0" y="223" width="320" height="342"/>
@@ -101,15 +104,8 @@
                                 <size key="titleShadowOffset" width="3" height="2"/>
                                 <state key="normal" title="Set Image"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrM-ay-uXO">
-                                <rect key="frame" x="178" y="193" width="64" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="complete">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUO-fb-NT8">
-                                <rect key="frame" x="178" y="193" width="64" height="30"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUO-fb-NT8">
+                                <rect key="frame" x="236" y="165" width="64" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="complete">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,11 +119,13 @@
                         <constraints>
                             <constraint firstItem="zIa-fB-DSh" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="25" id="1Gy-jj-Mq2"/>
                             <constraint firstItem="KvC-mR-x90" firstAttribute="leading" secondItem="dL3-Tg-FFp" secondAttribute="trailing" constant="13" id="2QZ-r8-fJs"/>
+                            <constraint firstItem="IUO-fb-NT8" firstAttribute="leading" secondItem="KvC-mR-x90" secondAttribute="trailing" constant="-70" id="2uT-KV-rqh"/>
                             <constraint firstItem="dL3-Tg-FFp" firstAttribute="leading" secondItem="KMd-iB-Y0k" secondAttribute="trailing" constant="-88" id="3PR-kp-KIo"/>
                             <constraint firstAttribute="trailing" secondItem="ZpH-cs-qRt" secondAttribute="trailing" constant="14" id="3ch-CP-mli"/>
                             <constraint firstItem="ZpH-cs-qRt" firstAttribute="leading" secondItem="dL3-Tg-FFp" secondAttribute="trailing" constant="13" id="4oE-yg-Spn"/>
                             <constraint firstAttribute="trailing" secondItem="IAw-5a-9G7" secondAttribute="trailing" id="6qy-5m-5ln"/>
                             <constraint firstAttribute="trailing" secondItem="KvC-mR-x90" secondAttribute="trailing" constant="14" id="7tv-rU-LOx"/>
+                            <constraint firstItem="KvC-mR-x90" firstAttribute="top" secondItem="IUO-fb-NT8" secondAttribute="bottom" constant="-29" id="ES8-jM-ErV"/>
                             <constraint firstItem="dL3-Tg-FFp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="23" id="Fr8-JA-kzn"/>
                             <constraint firstAttribute="trailing" secondItem="zIa-fB-DSh" secondAttribute="trailing" constant="14" id="Iar-We-Ogf"/>
                             <constraint firstItem="jOu-h3-Cuu" firstAttribute="top" secondItem="ZpH-cs-qRt" secondAttribute="bottom" constant="-25" id="K5z-05-ghS"/>
@@ -162,6 +160,7 @@
                         <outlet property="activityIndicator1" destination="CV5-hV-ocr" id="OuZ-EW-2mB"/>
                         <outlet property="activityIndicator2" destination="jOu-h3-Cuu" id="sRd-Mu-7Qr"/>
                         <outlet property="bookImageView" destination="dL3-Tg-FFp" id="f8h-tm-stz"/>
+                        <outlet property="btnComplete" destination="IUO-fb-NT8" id="oOT-ae-5qf"/>
                         <outlet property="txtAuthor" destination="ZpH-cs-qRt" id="ArB-8a-arU"/>
                         <outlet property="txtIsbn" destination="KvC-mR-x90" id="B18-Pi-Tdc"/>
                         <outlet property="txtTitle" destination="zIa-fB-DSh" id="lPq-gt-kQK"/>

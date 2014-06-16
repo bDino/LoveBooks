@@ -124,6 +124,24 @@
     self.bookDownloader.delegate = self;
 }
 
+- (IBAction)isbnEdited:(id)sender
+{
+    if(self.txtIsbn.text.length == 10)
+    {
+        CGRect frame = self.txtIsbn.frame;
+        frame.size.width = 105;
+        self.txtIsbn.frame = frame;
+        
+        self.btnComplete.enabled = YES;
+        self.btnComplete.hidden = NO;
+    }
+    else
+    {
+        self.btnComplete.enabled = NO;
+        self.btnComplete.hidden = YES;
+    }
+}
+
 # pragma mark - BookDownloaderDelegate
 -(void)didUpdateBook:(BookItem *)book
 {

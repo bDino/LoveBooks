@@ -15,6 +15,7 @@
 
 @interface BookDetailViewController : UIViewController <UITableViewDataSource, BookDownloaderDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *btnComplete;
 @property (weak, nonatomic) IBOutlet UITextField *txtAuthor;
 @property (weak, nonatomic) IBOutlet UITextField *txtTitle;
 @property (weak, nonatomic) IBOutlet UITextField *txtIsbn;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) BookItem *book;
 
 - (IBAction)completeByIsbn:(id)sender;
+- (IBAction)isbnEdited:(id)sender;
 - (IBAction)changedDownloader:(UISegmentedControl *)sender;
 
 @end
