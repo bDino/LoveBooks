@@ -14,6 +14,7 @@
 @protocol BookDownloaderDelegate <NSObject>
 
 -(void)didUpdateBook:(BookItem *)book;
+-(void)didReceiveErrorUpdatingBook:(NSString *)errorMessage;
 
 @end
 
@@ -21,6 +22,6 @@
 
 @property (weak, nonatomic) id<BookDownloaderDelegate> delegate;
 
--(void)updateBook:(BookItem *)book ByIsbn:(NSString *)isbn;
+-(void)updateBook:(BookItem *)book byIsbn:(NSString *)isbn;
 
 @end

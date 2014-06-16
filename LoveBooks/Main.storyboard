@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xDN-c0-671">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xDN-c0-671">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -33,12 +33,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="actionIsbnEditingDidEnd:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="FQm-9x-6Er"/>
-                                    <action selector="actionIsbnValueChagned:" destination="vXZ-lx-hvc" eventType="valueChanged" id="oTd-9q-WvL"/>
-                                </connections>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IAw-5a-9G7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IAw-5a-9G7">
                                 <rect key="frame" x="0.0" y="223" width="320" height="342"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,6 +97,23 @@
                                 <size key="titleShadowOffset" width="3" height="2"/>
                                 <state key="normal" title="Set Image"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrM-ay-uXO">
+                                <rect key="frame" x="178" y="193" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="complete">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUO-fb-NT8">
+                                <rect key="frame" x="178" y="193" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="complete">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="completeByIsbn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0Ok-TG-mm3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -119,7 +132,7 @@
                             <constraint firstItem="KvC-mR-x90" firstAttribute="top" secondItem="ZpH-cs-qRt" secondAttribute="bottom" constant="8" id="V66-sq-UaP"/>
                             <constraint firstItem="dL3-Tg-FFp" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="7" id="Vt6-mN-Ae3"/>
                             <constraint firstItem="zIa-fB-DSh" firstAttribute="leading" secondItem="dL3-Tg-FFp" secondAttribute="trailing" constant="13" id="YNJ-L7-YPH"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="IAw-5a-9G7" secondAttribute="bottom" id="edN-mL-9VF"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="IAw-5a-9G7" secondAttribute="bottom" constant="3" id="edN-mL-9VF"/>
                             <constraint firstItem="IAw-5a-9G7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="j3f-Mf-fQt"/>
                             <constraint firstItem="jOu-h3-Cuu" firstAttribute="leading" secondItem="ZpH-cs-qRt" secondAttribute="trailing" constant="-106" id="jjo-6s-phe"/>
                             <constraint firstItem="zIa-fB-DSh" firstAttribute="top" secondItem="CV5-hV-ocr" secondAttribute="bottom" constant="-24" id="ju9-Jq-xIw"/>

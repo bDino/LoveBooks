@@ -10,7 +10,7 @@
 
 @implementation BookDownloader
 
--(void)updateBook:(BookItem *)book ByIsbn:(NSString *)isbn
+-(void)updateBook:(BookItem *)book byIsbn:(NSString *)isbn
 {
     [NSException raise:@"Must be overridden by subclass"
                 format:@"Must be overridden by subclass"];

@@ -11,7 +11,8 @@
 @interface BookDetailViewController ()
 
 @property (strong, nonatomic) NSArray *genres;
-@property (strong,nonatomic) UIActivityIndicatorView *activityView;
+@property (strong, nonatomic) UIActivityIndicatorView *activityView;
+@property (strong, nonatomic) UIBarButtonItem *saveButton;
 @end
 
 @implementation BookDetailViewController
@@ -19,9 +20,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIBarButtonItem *btnSave  = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveBook)];
+    self.saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveBook)];
     
-    self.navigationItem.rightBarButtonItem = btnSave;
+    self.navigationItem.rightBarButtonItem = self.saveButton;
 
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -95,6 +96,45 @@
         && ![self.txtIsbn.text isEqualToString:@""];
 }
 
+- (IBAction)completeByIsbn:(id)sender {
+    if (![self.txtIsbn.text isEqualToString:@""])
+    {
+        [self.activityIndicator1 startAnimating];
+        [self.activityIndicator2 startAnimating];
+
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+
+        [self.bookDownloader updateBook:self.book byIsbn:self.txtIsbn.text];
+    }
+}
+
+# pragma mark - BookDownloaderDelegate
+-(void)didUpdateBook:(BookItem *)book
+{
+    [self.activityIndicator1 stopAnimating];
+    [self.activityIndicator2 stopAnimating];
+
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+
+    self.txtAuthor.text = book.author;
+    self.txtTitle.text = book.title;
+}
+
+- (void)didReceiveErrorUpdatingBook:(NSString *)errorMessage
+{
+    [self.activityIndicator1 stopAnimating];
+    [self.activityIndicator2 stopAnimating];
+
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:errorMessage
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+    [errorAlert show];
+}
+
 # pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -117,35 +157,6 @@
     return [self.modelManager countAllGenres];
 }
 
-# pragma mark - BookDownloaderDelegate
--(void)didUpdateBook:(BookItem *)book;
-{
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-            [self.activityIndicator1 stopAnimating];
-            [self.activityIndicator2 stopAnimating];
-            
-            if(book != nil)
-            {
-                [self.txtIsbn setEnabled:NO];
-                self.txtAuthor.text = book.author;
-                self.txtTitle.text = book.title;
-            }
-            else
-            {
-                self.txtAuthor.text = @"Error loading resource";
-                self.txtTitle.text = @"Error loading resource";
-            }
-        });
-}
 
-- (IBAction)actionIsbnEditingDidEnd:(id)sender {
-    if(self.txtIsbn.text.length == 10)
-    {
-        [self.activityIndicator1 startAnimating];
-        [self.activityIndicator2 startAnimating];
-        [self.bookDownloader updateBook:self.book ByIsbn:self.txtIsbn.text];
-    }
 
-}
 @end

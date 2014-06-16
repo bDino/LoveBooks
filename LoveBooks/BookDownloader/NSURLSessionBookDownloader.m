@@ -21,7 +21,6 @@
     if (self = [super init])
     {
         NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        
         self.session = [NSURLSession sessionWithConfiguration:configuration];
     }
 
@@ -29,40 +28,47 @@
 }
 
 //Testing with ISBN 0615464807
--(void)updateBook:(BookItem *)book ByIsbn:(NSString *)isbn
+-(void)updateBook:(BookItem *)book byIsbn:(NSString *)isbn
 {
     NSURL * url = [NSURL URLWithString:[BOOK_API_ENDPOINT stringByAppendingString:isbn]];
     [[self.session dataTaskWithURL:url
                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                    if (!error) {
+                    if (!error)
+                    {
                         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
 
-                        @try
+                        NSDictionary *data = [[jsonObject objectForKey:@"data"] objectAtIndex:0];
+
+                        if (data)
                         {
-                            NSArray *data = [jsonObject objectForKey:@"data"];
-                            NSArray *author = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"author_data"]);
-                        
-                            book.isbn = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"isbn10"]);
-                            book.author = ([(NSDictionary *)[author objectAtIndex:0] objectForKey:@"name"]);
-                            book.title = ([(NSDictionary *)[data objectAtIndex:0] objectForKey:@"title"]);
-                        
-                            [self.delegate didUpdateBook:book];
+                            NSDictionary *author = [[data objectForKey:@"author_data"] objectAtIndex:0];
+
+                            book.author = [author objectForKey:@"name"];
+                            book.isbn = [data objectForKey:@"isbn10"];
+                            book.title = [data objectForKey:@"title"];
+
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self.delegate didUpdateBook:book];
+                            });
+
                         }
-                        @catch
-                        (NSException * e) {
-                            NSLog(@"Exception: %@", e);
-                        }
-                        @finally
+                        else
                         {
-                            [self.delegate didUpdateBook:nil];                        
+                            NSString * errorMessage = [NSString stringWithFormat:@"Could not find Book with ISBN: %@", isbn];
+
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self.delegate didReceiveErrorUpdatingBook:errorMessage];
+                            });
                         }
-                        
-                    }else
-                    {
-                        NSLog(@"Error: %@ %@", error, [error userInfo]);
-                        [self.delegate didUpdateBook:nil];
                     }
-                }
+                    else
+                    {
+                        NSString * errorMessage = @"Could not connect to isbndb.com";
+
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.delegate didReceiveErrorUpdatingBook:errorMessage];
+                        });                    }
+                    }
      ] resume];
 }
 

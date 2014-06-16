@@ -25,7 +25,6 @@
 @property (strong, nonatomic) ModelManager *modelManager;
 @property (strong, nonatomic) BookItem *book;
 
-- (IBAction)actionIsbnEditingDidEnd:(id)sender;
-
+- (IBAction)completeByIsbn:(id)sender;
 
 @end
