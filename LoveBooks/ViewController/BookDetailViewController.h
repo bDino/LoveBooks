@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NSURLSessionBookDownloader.h"
+#import "AFNetworkingBookDownloader.h"
 #import "ModelManager.h"
 #import "BookItem.h"
 #import "Genre.h"
@@ -26,5 +27,6 @@
 @property (strong, nonatomic) BookItem *book;
 
 - (IBAction)completeByIsbn:(id)sender;
+- (IBAction)changedDownloader:(UISegmentedControl *)sender;
 
 @end

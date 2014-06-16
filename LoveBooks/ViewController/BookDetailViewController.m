@@ -108,6 +108,22 @@
     }
 }
 
+- (IBAction)changedDownloader:(UISegmentedControl *)sender {
+    BookDownloader * downloader;
+
+    if (sender.selectedSegmentIndex == 0)
+    {
+         downloader = [[NSURLSessionBookDownloader alloc] init];
+    }
+    else
+    {
+        downloader = [[AFNetworkingBookDownloader alloc] init];
+    }
+
+    self.bookDownloader = downloader;
+    self.bookDownloader.delegate = self;
+}
+
 # pragma mark - BookDownloaderDelegate
 -(void)didUpdateBook:(BookItem *)book
 {

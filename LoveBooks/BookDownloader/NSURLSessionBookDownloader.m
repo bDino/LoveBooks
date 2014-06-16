@@ -30,6 +30,8 @@
 //Testing with ISBN 0615464807
 -(void)updateBook:(BookItem *)book byIsbn:(NSString *)isbn
 {
+    NSLog(@"Using NSURLSession");
+
     NSURL * url = [NSURL URLWithString:[BOOK_API_ENDPOINT stringByAppendingString:isbn]];
     [[self.session dataTaskWithURL:url
                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
